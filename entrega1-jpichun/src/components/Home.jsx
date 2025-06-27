@@ -1,4 +1,5 @@
 
+
 function Home () {
   
     return (
@@ -6,7 +7,9 @@ function Home () {
         
         <h2>Bienvenidos!</h2>
         <p>Conoce nuestros productos y ofertas! </p>
+      
       </div>
+      
     )
   }
 
