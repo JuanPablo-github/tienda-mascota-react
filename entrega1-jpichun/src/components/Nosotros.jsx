@@ -6,7 +6,7 @@ function Nosotros () {
       <div >
         <h2>Nosotros</h2>
 
-        <p>Somos un equipo apasionado por la tecnología y el desarrollo web. Nuestro objetivo es crear experiencias únicas y funcionales para nuestros usuarios.</p>
+        <p>En nuestra tienda encontraras todo lo necesario para tu mascota o clinica veterinaria, contamos con mas de 10 años de experiencia!</p>
         
       </div>
     )

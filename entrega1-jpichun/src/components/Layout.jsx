@@ -1,6 +1,7 @@
 import NavBar from './NavBar';
 import { Outlet } from 'react-router-dom';
 
+
 function Layout() {
   return (
     <>
@@ -9,7 +10,6 @@ function Layout() {
       <main className="main-content">
         <Outlet />
       </main>
-      
     </>
   );
 }

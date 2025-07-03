@@ -1,33 +1,27 @@
-import { useState, useEffect } from 'react';
-import productosMascotas from "../productosMascotas.js";
-import ItemList from './Itemlist.jsx';
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import db from "../../firebaseConfig"; // ✅ Asegúrate de que esta ruta sea correcta
+import ItemList from "./ItemList";     // ✅ Importa correctamente el componente de cards
 
-import React from 'react';
-
-
-function ItemListContainer () {
-   
-const [items, setItems] = useState([]);
+function ItemListContainer() {
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    const fetchProductos = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(productosMascotas)
-    },2000)
-    })
-    
-    fetchProductos.then((data) => {
-    setItems(data)
-    })
-   },[])
+    const fetchData = async () => {
+      try {
+        const productosRef = collection(db, "productos");
+        const snapshot = await getDocs(productosRef);
+        const docs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setProductos(docs);
+      } catch (err) {
+        console.error("Error al cargar productos:", err);
+      }
+    };
 
+    fetchData();
+  }, []);
 
-    return (
-      <div className="container">
-        <ItemList items={items}/>
-      </div>
-    )
-  
+  return <ItemList items={productos} />;
 }
 
-export default ItemListContainer
+export default ItemListContainer;
